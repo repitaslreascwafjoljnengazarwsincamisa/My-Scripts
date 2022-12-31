@@ -47,6 +47,14 @@ Section1:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		getgenv().loop = Value
+		if getgenv().loop == true then
+		OrionLib:MakeNotification({
+			Name = "Warning",
+			Content = "You Need To Turn On View Lock",
+			Image = "rbxassetid://7734068321",
+			Time = 5
+		})
+		end
 	while getgenv().loop do
 		wait(0.1) 
 		pcall(function()
