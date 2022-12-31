@@ -240,6 +240,60 @@ Section4:AddButton({
 		end
   	end    
 })
+Section4:AddButton({
+	Name = "Kill Red Team",
+	Callback = function()
+		if tonumber(game.Players.LocalPlayer.PlayerGui.Start.Powers.Burn.T.Text) >= tonumber(1) then
+			local cf = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+			local ch = game.Players.LocalPlayer.Character.HumanoidRootPart
+			game.Players.LocalPlayer.PlayerGui.Start.Powers.Burn.T.Text=game.Players.LocalPlayer.PlayerGui.Start.Powers.Burn.T.Text-1
+			workspace.FE.Powers.Burn:FireServer()
+			wait(0.2)
+			for _,P in ipairs(game:GetService("Teams").Red:GetPlayers()) do
+			wait(0.1)
+			local cfps = P.Character.HumanoidRootPart.Position
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(cfps)
+			print(P)
+			end
+			wait(1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(cf)
+		else
+			OrionLib:MakeNotification({
+				Name = "Error",
+				Content = "You Do Not Have Enough Burn Power",
+				Image = "rbxassetid://7734068321",
+				Time = 5
+			})
+		end
+  	end    
+})
+Section4:AddButton({
+	Name = "Kill Blue Team",
+	Callback = function()
+		if tonumber(game.Players.LocalPlayer.PlayerGui.Start.Powers.Burn.T.Text) >= tonumber(1) then
+			local cf = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+			local ch = game.Players.LocalPlayer.Character.HumanoidRootPart
+			game.Players.LocalPlayer.PlayerGui.Start.Powers.Burn.T.Text=game.Players.LocalPlayer.PlayerGui.Start.Powers.Burn.T.Text-1
+			workspace.FE.Powers.Burn:FireServer()
+			wait(0.2)
+			for _,P in ipairs(game:GetService("Teams").Blue:GetPlayers()) do
+			wait(0.1)
+			local cfps = P.Character.HumanoidRootPart.Position
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(cfps)
+			print(P)
+			end
+			wait(1)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(cf)
+		else
+			OrionLib:MakeNotification({
+				Name = "Error",
+				Content = "You Do Not Have Enough Burn Power",
+				Image = "rbxassetid://7734068321",
+				Time = 5
+			})
+		end
+  	end    
+})
 spawn(function()
 Section4:AddSlider({
 	Name = "Speed",
